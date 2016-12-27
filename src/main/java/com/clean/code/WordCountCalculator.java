@@ -7,8 +7,14 @@ public class WordCountCalculator {
 	
 	public Map<String, Integer> countUniqueWords(String inputWord) {
 		Map<String, Integer> wordAndCount = new HashMap<>();
-		wordAndCount.put(inputWord, 1);
+		String SPACE_DELIMITER = " ";
+		if(inputWord.contains(SPACE_DELIMITER)){
+			String[] words = inputWord.split(SPACE_DELIMITER);
+			wordAndCount.put(words[0], 1);
+			wordAndCount.put(words[1], 1);
+		}else{
+			wordAndCount.put(inputWord, 1);
+		}		
 		return wordAndCount;
-
 	}
 }
