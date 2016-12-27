@@ -10,7 +10,12 @@ public class WordCountCalculator {
 		String SPACE_DELIMITER = " ";
 		String[] words = inputWord.split(SPACE_DELIMITER);
 		for(String word : words){
-			wordsCount.put(word, 1);
+			if(wordsCount.containsKey(word)){
+				Integer countForWord = wordsCount.get(word);
+				wordsCount.put(word, countForWord + 1);
+			}else{
+				wordsCount.put(word, 1);
+			}
 		}
 		return wordsCount;
 	}
