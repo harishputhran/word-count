@@ -42,4 +42,10 @@ public class WordCountCalculatorShould {
 		expectedUniqueWordsCount.put(HELLO_TEXT, WORD_COUNT_2);
 		assertEquals(expectedUniqueWordsCount, wordCountCalculator.countUniqueWords("Hello Hello"));
 	}
+	
+	@Test
+	public void return_map_of_Unique_Words_and_its_Count_When_Input_Word_is_Comma_Delimited_Text_consisting_of_2_Identical_Words(){		
+		expectedUniqueWordsCount.put(HELLO_TEXT, valueOf(2));
+		assertEquals(expectedUniqueWordsCount, wordCountCalculator.countUniqueWords("Hello,Hello"));
+	}
 }
