@@ -1,6 +1,7 @@
 package com.clean.code;
 
 import static org.junit.Assert.assertEquals;
+import static java.lang.Long.valueOf;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,8 +11,12 @@ import org.junit.Test;
 
 public class WordCountCalculatorShould {
 	
+	private final Long WORD_COUNT_2 = valueOf(2);
+	private final Long WORD_COUNT_1 = valueOf(1);
+	private final String HELLO_TEXT = "Hello";
+	
 	private WordCountCalculator wordCountCalculator;
-	private Map<String, Integer> expectedUniqueWordsCount;
+	private Map<String, Long> expectedUniqueWordsCount;
 	
 	@Before
 	public void setUp(){
@@ -21,21 +26,20 @@ public class WordCountCalculatorShould {
 
 	@Test
 	public void return_map_of_Unique_Words_and_its_Count_When_Input_is_One_Word(){
-		String helloText = "Hello";
-		expectedUniqueWordsCount.put(helloText, 1);
-		assertEquals(expectedUniqueWordsCount, wordCountCalculator.countUniqueWords(helloText));		
+		expectedUniqueWordsCount.put(HELLO_TEXT, WORD_COUNT_1);
+		assertEquals(expectedUniqueWordsCount, wordCountCalculator.countUniqueWords(HELLO_TEXT));		
 	}
 	
 	@Test
 	public void return_map_of_Unique_Words_and_its_Count_When_Input_Word_is_Space_Delimited_Text_consisting_of_2_Words(){
-		expectedUniqueWordsCount.put("Hello", 1);
-		expectedUniqueWordsCount.put("World", 1);
+		expectedUniqueWordsCount.put(HELLO_TEXT, WORD_COUNT_1);
+		expectedUniqueWordsCount.put("World", WORD_COUNT_1);
 		assertEquals(expectedUniqueWordsCount, wordCountCalculator.countUniqueWords("Hello World"));
 	}
 	
 	@Test
 	public void return_map_of_Unique_Words_and_its_Count_When_Input_Word_is_Space_Delimited_Text_consisting_of_2_Identical_Words(){
-		expectedUniqueWordsCount.put("Hello", 2);
+		expectedUniqueWordsCount.put(HELLO_TEXT, WORD_COUNT_2);
 		assertEquals(expectedUniqueWordsCount, wordCountCalculator.countUniqueWords("Hello Hello"));
 	}
 }
