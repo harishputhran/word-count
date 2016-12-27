@@ -7,11 +7,7 @@ import java.util.stream.Collectors;
 
 public class WordCountCalculator {
 	
-	private final String SPACE_DELIMITER = " ";
-	private final String COMMA_DELIMITER = ",";
-	
-	public Map<String, Long> countUniqueWords(String inputText) {
-		String delimiter = inputText.contains(COMMA_DELIMITER) ? COMMA_DELIMITER : SPACE_DELIMITER;
+	public Map<String, Long> countUniqueWords(String inputText, String delimiter) {
 		String[] words = getWordsFromDelimitedText(inputText, delimiter);
 		return getWordCount(words);
 	}
